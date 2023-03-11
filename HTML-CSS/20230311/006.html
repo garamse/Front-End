@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>flex로 레이아웃 구현하기</title>
+
+    <style>
+        body{
+            background: black;
+        }
+        header{
+            background: red;
+        }
+
+        section{
+            background: yellow;
+        }
+
+        aside{
+            background: orange;
+
+        }
+
+        footer{
+            background: green;
+        }
+
+        .wrapper{
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            height: 700px;
+            justify-content: space-between;
+        }
+
+        .wrapper2{
+            display: flex;
+            justify-content: space-between;
+            gap:10px;
+            flex-grow: 1;
+        }
+
+        header,footer,section,aside{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            
+        }
+
+        .wrapper section{
+            flex-grow: 1;
+        }
+
+        header,footer{
+            flex-basis: 80px;
+        }
+
+        .wrapper aside{
+            flex-basis:400px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <header>header</header>
+        <div class="wrapper2">
+            <section>article</section>
+            <aside>aside</aside>
+        </div>
+        <footer>footer</footer>
+    </div>
+</body>
+</html>
