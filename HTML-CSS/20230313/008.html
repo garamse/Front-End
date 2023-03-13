@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>button 동적 가상선택자</title>
+
+    <style>
+        button{
+            width: 88px;
+            height: 32px;
+            background: #343F50;
+            border: 2px solid #1A202C;
+            box-shadow: inset 2px 2px #4A5568;
+            color: #CBD5DF;
+            font-size: 12px;
+            font-weight: 700;
+            text-align: center;
+            line-height: 28px;
+            cursor: pointer;
+        }
+
+        button:not(:disabled):hover{
+            text-decoration: underline;
+            color: #fff;
+        }
+
+        button:active{
+            box-shadow: inset 2px 2px #262F3E;
+        }
+
+        button:disabled{
+            color: #4A5568;
+            box-shadow: none;
+            background: #3A4556;
+            border: 1px solid #343E4E;
+
+        }
+
+        button:focus{
+            outline: none;
+            border:1px solid #439AFF;
+        }
+
+    </style>
+</head>
+<body>
+    <button type="button">Button</button>
+    <button type="button" disabled>Button</button>
+</body>
+</html>
