@@ -1,0 +1,397 @@
+body {
+  margin: 0;
+  background: #eae8fe;
+  font-family: "Noto Sans KR", sans-serif;
+}
+
+a,
+p {
+  text-decoration: none;
+  color: black;
+  margin: 0;
+}
+
+input {
+  padding: 0;
+  border: 0 solid black;
+  color: #bdbdbd;
+  font-family: "Noto Sans KR", sans-serif;
+}
+
+.backimg {
+  display: block;
+  width: 386px;
+  margin: auto;
+}
+
+.wrapper {
+  margin: 67px auto;
+  width: 758px;
+  display: flex;
+  gap: 28px;
+}
+/* 왼쪽 박스*/
+.left_card {
+}
+
+.leftcard-box {
+  background: #fff;
+  width: 360px;
+  height: 545px;
+  padding: 31px 27px 28px 27px;
+  box-sizing: border-box;
+}
+
+/* 왼쪽 박스 안 메뉴카드 */
+
+.itembox {
+  display: grid;
+  grid-template-areas:
+    "a b c"
+    "d e f";
+  gap: 12px;
+  align-content: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+[class|="item"] {
+  background: #fff;
+  border-radius: 10px;
+  width: 94px;
+  height: 130px;
+  box-shadow: rgba(0, 0, 0, 0.6) 0px 0px 4px;
+}
+
+[class|="item"]:hover:not(.item-b) {
+  margin: -3px;
+  border: 3px solid #6327fe;
+  cursor: pointer;
+}
+
+.itembox a {
+  display: grid;
+}
+
+.itembox div {
+  text-align: center;
+}
+
+.itembox .img {
+  margin: auto;
+  margin-top: 11.07px;
+}
+
+.itembox p {
+  font-size: 9px;
+  font-weight: 500;
+  text-align: center;
+  color: #333333;
+}
+
+.itembox .price {
+  width: 70px;
+  height: 22px;
+  border-radius: 50px;
+  background: #6327fe;
+  font-size: 12px;
+  margin: 7px 11px 9px 13px;
+  line-height: 22px;
+  color: #fff;
+}
+
+.item-a {
+  grid-area: a;
+}
+
+.item-b {
+  grid-area: b;
+  position: relative;
+}
+
+.item-b::before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url(../images/Sold-out.svg) no-repeat center/ 60px 45px
+    rgba(0, 0, 0, 80%);
+  border-radius: 10px;
+}
+
+.item-c {
+  grid-area: c;
+}
+
+.item-d {
+  grid-area: d;
+}
+
+.item-e {
+  grid-area: e;
+}
+
+.item-f {
+  grid-area: f;
+}
+
+/* 왼쪽 박스 안 money박스 */
+
+.moneybox {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 12px;
+  margin-bottom: 11px;
+}
+
+.box-g,
+.box-j {
+  width: 200px;
+  height: 33px;
+  border-radius: 5px;
+}
+
+.box-h,
+.box-k {
+  width: 94px;
+  height: 32px;
+  box-shadow: rgba(0, 0, 0, 0.6) 0px 0px 4px;
+  border-radius: 5px;
+  font-size: 13px;
+  font-weight: 600;
+  text-align: center;
+  line-height: 32px;
+}
+
+.box-g {
+  background: #eae8fe;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 6px 0 7px 10px;
+  box-sizing: border-box;
+}
+
+.box-g-money {
+  display: inline-block;
+  width: 54px;
+  height: 20px;
+  float: right;
+  margin: 0 10px 7px 79px;
+}
+
+.box-j {
+  padding: 6px 0 8px 6px;
+  box-sizing: border-box;
+  border: 1.5px solid #bdbdbd;
+  font-size: 13px;
+}
+
+/* 왼쪽 박스 안 메뉴박스, 획득버튼 */
+
+.menubox {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.mini-menu {
+  background: #eae8fe;
+  width: 200px;
+  height: 106px;
+  border-radius: 5px;
+  border: 1.5px solid #bdbdbd;
+  overflow-y: hidden;
+  padding: 12px 18px 12px 12px;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.mini-menu::after {
+  content: " ";
+  display: block;
+  width: 4px;
+  height: 79px;
+  background: #fff;
+  margin: 9px 4px 17px 0;
+  border-radius: 5px;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.mini-menu article {
+  width: 170px;
+  height: 46px;
+  background: #fff;
+  border-radius: 5px;
+  margin: auto;
+  margin-bottom: 6px;
+}
+
+.mini-menu a article img {
+  height: 32px;
+  width: 17px;
+  float: left;
+  margin: 6px 10px 7px 10px;
+}
+
+.mini-menu article p {
+  font-size: 9px;
+  width: 73px;
+  height: 10px;
+  float: left;
+  margin: 18px 0;
+}
+
+.mini-menu .number {
+  width: 30px;
+  height: 30px;
+  border-radius: 5px;
+  border: 1.5px solid #bdbdbd;
+  box-sizing: border-box;
+  float: right;
+  text-align: center;
+  margin: 8px 8px 8px 21px;
+}
+
+.get-btn {
+  width: 94px;
+  height: 106px;
+  background: #6327fe;
+  font-size: 13px;
+  text-align: center;
+  line-height: 106px;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 0px 4px;
+  color: #fff;
+  font-weight: 700;
+}
+
+/* 오른쪽 박스 소지한 금액 */
+
+.right_card {
+}
+
+.top-box {
+  background: #fff;
+  width: 360px;
+  height: 50px;
+  margin-bottom: 4px;
+  padding: 9px 0px 9px 0;
+  box-sizing: border-box;
+}
+
+.top-box-title {
+  background: #eae8fe;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 6px 10px 6px 10px;
+  box-sizing: border-box;
+  width: 306px;
+  height: 32px;
+  border-radius: 5px;
+  margin: auto;
+}
+
+.top-box-price {
+  float: right;
+  margin-left: 152px;
+}
+
+.bottom-box {
+  background: #fff;
+  width: 361px;
+  height: 475px;
+  margin: 17px 0; /*위아래 17 */
+}
+
+.bottom-box p {
+  text-align: center;
+  font-weight: 700;
+  font-size: 14px;
+  padding-top: 24px;
+  padding-bottom: 13px;
+  box-sizing: border-box;
+}
+
+/* 오른쪽 박스 메인*/
+
+.mainmenu-box {
+  width: 306px;
+  height: 364px;
+  background: #eae8fe;
+  margin: auto;
+  border: 1.5px solid #bdbdbd;
+  overflow-y: hidden;
+  border-radius: 5px;
+  padding: 12px 18px 12px 12px;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.mainmenu-box::after {
+  content: " ";
+  display: block;
+  width: 4px;
+  height: 79px;
+  background: #fff;
+  margin: 9px 4px 17px 0;
+  border-radius: 5px;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.mainmenu-box article {
+  width: 276px;
+  height: 46px;
+  background: #fff;
+  border-radius: 5px;
+  margin: auto;
+  margin-bottom: 6px;
+}
+
+/* 메인 박스 요소 */
+
+.mainmenu-box a article img {
+  height: 32px;
+  width: 17px;
+  float: left;
+  margin: 6px 10px 7px 10px;
+}
+
+.mainmenu-box article p {
+  font-size: 9px;
+  width: 73px;
+  height: 10px;
+  display: inline-block;
+  padding: 18px 127px 18px 0;
+  box-sizing: border-box;
+  font-weight: 500;
+}
+
+.mainmenu-box .main-number {
+  width: 30px;
+  height: 30px;
+  border-radius: 5px;
+  border: 1.5px solid #bdbdbd;
+  text-align: center;
+  display: inline-block;
+  margin: 8px 8px 8px 0;
+  float: right;
+}
+
+.bottom-box span {
+  width: 109px;
+  height: 20px;
+  font-size: 12px;
+  font-weight: bold;
+  float: right;
+  margin: 6px 27px 26px 224px;
+  text-align: right;
+}
