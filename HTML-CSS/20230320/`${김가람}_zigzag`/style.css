@@ -1,0 +1,202 @@
+:root {
+  font-family: "Montserrat", sans-serif;
+  /*
+	font-weight: 500;
+	font-weight: 700;
+	*/
+}
+
+h1,
+p {
+  margin: 0;
+  padding: 0;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: #673399;
+}
+
+.wrapper {
+  margin: auto;
+  width: 1080px;
+}
+
+/* header */
+
+header {
+  width: 1080px;
+  display: flex;
+}
+
+.header-title {
+  color: #fff;
+  font-size: 40px;
+  position: relative;
+  font-weight: 500;
+  margin: 100px 0;
+  width: 280px;
+}
+
+.header-title p {
+  display: inline-block;
+  position: relative;
+}
+
+.header-title::after {
+  content: " ";
+  display: block;
+  width: 245px;
+  height: 15px;
+  background: orangered;
+  position: absolute;
+  left: 10;
+  top: 52%;
+  z-index: -9999999;
+}
+
+.header-title p::after {
+  content: " ";
+  display: block;
+  width: 196px;
+  height: 15px;
+  background: orangered;
+  position: absolute;
+  left: 10;
+  top: 82%;
+  z-index: -9999999;
+}
+
+.header-title::before {
+  content: " ";
+  display: block;
+  width: 90px;
+  height: 2.1px;
+  background: #bd8fe8;
+  position: absolute;
+  left: 100%;
+  top: 50%;
+}
+
+.header-text {
+  color: #bd8fe8;
+  font-size: 14px;
+  margin: auto;
+  width: 400px;
+  margin-left: 110px;
+  line-height: 22px;
+}
+
+/* 메인 화면 */
+
+main {
+  margin: auto;
+}
+
+main .contents {
+  margin-bottom: 24px;
+}
+
+main .contents:last-child {
+  margin-bottom: 100px;
+}
+
+
+.contents-box01{
+  position: relative;
+  display: flex;
+}
+
+.contents-box02{
+  position: relative;
+  display: flex;
+}
+
+img {
+  width: 26%;
+  filter: opacity(55%);
+}
+
+.contents-box01 div {
+  display: block;
+  color: #fff;
+  font-size: 30px;
+  position: absolute;
+  left: 0;
+  bottom: 50%;
+  transform: translate(110%, 50%);
+}
+
+.contents-box02 div {
+  display: block;
+  color: #fff;
+  font-size: 30px;
+  position: absolute;
+  left: 0;
+  bottom: 50%;
+  transform: translate(110%, 50%);
+}
+
+.reverse-box div {
+  display: block;
+  color: #fff;
+  font-size: 30px;
+  position: absolute;
+  right: 0;
+  bottom: 50%;
+  transform: translate(-140%, 50%);
+}
+
+
+.text-box {
+  background: #fff;
+  padding: 24px;
+  box-sizing: border-box;
+  flex-grow: 1;
+}
+
+.text-box strong {
+  font-size: 18px;
+  color: #673399;
+}
+
+.text-box ul {
+  margin-top: 32px;
+}
+
+.text-box ul li {
+  font-size: 14px;
+  color: #6a6a6a;
+}
+
+/* reverse-row*/
+
+.reverse-contents {
+  margin-bottom: 24px;
+}
+
+.reverse-box {
+  display: flex;
+  flex-direction: row-reverse;
+  position: relative;
+}
+
+/* ul li */
+
+ul {
+  line-height: 25px;
+}
+
+li::before {
+  content: "";
+  background: #bd8fe8;
+  border-radius: 1ch;
+  padding-inline: 1ch;
+  margin-inline-end: 1.5ch;
+  font-size: 10px;
+}
