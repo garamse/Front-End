@@ -1,0 +1,15 @@
+$value: blue;
+
+.one {
+  // 글로벌 권장 x 앞에 선언한 value가 먹지 않게됨
+  $value: red !global;
+  color: $value;
+
+  .three {
+    background-color: $value;
+  }
+}
+
+.two {
+    color: $value;
+}

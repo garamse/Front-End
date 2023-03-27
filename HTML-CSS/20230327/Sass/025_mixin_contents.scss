@@ -1,0 +1,22 @@
+@mixin one {
+  width: 100px;
+  height: 100px;
+  color: white;
+  @content;
+}
+
+.test1 {
+  @include one;
+}
+
+.test2 {
+  @include one {
+    background: red; // content 안으로 들어감
+  }
+}
+
+.test2 {
+  @include one;
+  background: red;
+  font-size: 32px;
+}

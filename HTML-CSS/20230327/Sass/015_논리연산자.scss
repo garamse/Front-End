@@ -1,0 +1,41 @@
+@debug not true; //false
+@debug not false; //true
+//true : 1
+//false : 0
+// or : 더하기
+//and : 곱
+
+@debug true and false; // 둘중 하나라도 false면 false
+
+// 두 조건이 모두 충족되는 경우 사용
+
+$value:32px;
+$color:black;
+
+p {
+    @if ($value >=32px and $color==red) {
+        letter-spacing:1rem;
+    }
+    @else {
+        letter-spacing: 0.5rem;
+    }
+}
+
+//모두 충족 되지 않으므로 0.5rem 
+
+
+@debug true or false; // 둘중 하나라도 true라면 true
+
+// 어떤 조건이든 하나라도 true 만족한다면 사용
+
+$value:32px;
+$color:red;
+
+.test {
+    @if ($value >=32px or $color==black) {
+        letter-spacing:1rem;
+    }
+    @else {
+        letter-spacing: 0.5rem;
+    }
+}
