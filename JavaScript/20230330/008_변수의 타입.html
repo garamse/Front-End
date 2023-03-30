@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>변수의 타입</title>
+  </head>
+  <body>
+    <script>
+      // 원시타입 string, number, bight, boolean, underfined, symbol, null
+      let str1 = "hello";
+      let str2 = str1;
+      console.log(str2); // 'hello'
+
+      str1 = "world";
+      console.log(str2); // str2에 할당된 값은 여전히 'hello' 입니다.
+
+      // string
+
+      console.log(typeof "hello"); // type을 알고싶을 때
+      console.log(typeof "i'm so happy"); // 이스케이프 문자
+
+      // number
+      console.log(typeof 10);
+      console.log(typeof 10.1);
+      console.log(typeof NaN);
+
+      // boolean
+      console.log(typeof true);
+      console.log(typeof false);
+
+      // undefined (값이 정해지지 않았다)
+      console.log(typeof undefined);
+      let a;
+      console.log(a);
+
+      // null (값이 비어있음을 명시적으로 나타냄)
+      console.log(typeof null); // object 설계 오류인 것을 개발자가 인정
+
+      // bigint (2^53-1보다 큰 정수)
+      console.log(9007199254709960n + 90071992547409960n); // 최대치보다 큰 값을 연산할 때는 n을 붙여줘야함
+
+      // symbol
+      console.log(Symbol());
+
+      ///////////////////////////
+
+      // function
+      console.log(typeof function () {});
+
+      // Object
+      console.log(typeof [10, 20, 30]); // 배열
+      console.log(typeof { a: 10, b: 20 });
+      console.log(typeof /정규표현식/gi);
+
+      // 형변환(다른 type -> number)
+      console.log(+"10");
+      console.log(parseInt("10"));
+      console.log(parseFloat("10.1"));
+      console.log(parseInt(true)); // NaN
+      console.log(parseInt(false)); // NaN
+      console.log(Number(true)); // 1
+      console.log(Nubmer(false)); // 0
+
+      // 형변환 (다른 type -> string)
+
+      let b = 10;
+      console.log(b.toString()); // 10.toString() 10.까지를 소숫점으로 봐서 x
+      console.log("" + 10);
+      console.log(String(10));
+
+      // 형변환 (다른 type -> boolean)
+
+      let c = 10;
+      console.log(Boolean(-1));
+      console.log(Boolean(0));
+      console.log(Boolean(1000));
+      console.log(!!1000); // true
+      console.log(!!c); // true
+    </script>
+  </body>
+</html>

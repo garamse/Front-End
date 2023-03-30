@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>변수 var,let,const</title>
+</head>
+<body>
+    <script>
+        // 변수(변할 수 있는 값) : var, let
+        // 상수(변하지 않는 값 ex) 파이, DOM 요소) : const
+
+        // let, const는 블록-레벨 선언 
+        // const는 반드시 초기화가 필요함 (변수 선언은 const로 하는 것을 권고)
+
+        const x = 100;
+        let y = 1000;
+
+        // 1000줄 코드 
+
+        console.log(x,y);
+
+        // const는 값 변경이 안되는것을 알아 가독성이 높아진다.
+
+        if(true){
+            let x = 100;
+            console.log(x); //100 출력
+        }
+        console.log(x); // 유효범위를 벗어나 출력 x
+
+        let s = 0
+        for(let i = 0; i <11; i++) {
+            s = s + i;
+        }
+        console.log(s)  // s가 위에서 선언 되었으므로 출력 가능
+
+        let ss = 0;
+        for(let i = 0; i<11; i++) {
+            ss = ss + i;
+            const sss = ss / 10;
+            console.log(sss); // sss 출력 가능 
+        }
+        // console.log(sss)가 여기 있다면 출력 불가능 
+
+        const k = 10;
+        k = 12; // error
+
+        const kk = [];
+        kk.push(10); // 배열 자체를 가리키고 있기 때문에 배열 안의 값이 변경되어도 no error
+    </script>
+</body>
+</html>

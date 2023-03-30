@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>논리연산 실무예제</title>
+</head>
+<body>
+    <script>
+        // Q.10미만의 자연수에서 3과 5의 배수를 구하면 3,5,6,9이다. 이들의 총합은 23이다. 1000미만의 자연수에서 3,5의 배수의 총합을 구하라.
+
+        let x = 0;
+        for(let i = 0; i < 1001; i++) {
+            if(i % 3 == 0 || i % 5 ==0) {
+                x = x + i;
+            }
+        }
+        console.log(x);
+
+    </script>
+    
+</body>
+</html>

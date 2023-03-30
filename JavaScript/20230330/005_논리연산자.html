@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>논리 연산자</title>
+  </head>
+  <body>
+    <script>
+      const x = true; // 1
+      const y = false; // 0
+
+      console.log(x && y); // and(곱) 둘 중에 하나라도 false라면 false, 둘 다 true여야 true
+      console.log(x || y); // or(합) 둘 중 하나라도 true면 true, 둘 다 false여야 false
+      console.log(!x); //  !(부정)
+      console.log(!!z); // !!(부정의 부정) 참인지 판별하려고 
+
+      // 비트 연산자
+      console.log(x & y) 
+      console.log(x | y)
+      // 비트 연산자 중 중요한 부정연산
+      console.log(~3)
+      console.log(~~3)
+      console.log(~~3.14) //소수점 탈락
+      //parseInt로 10진수 뽑기
+      console.log(parseInt(3.14))
+    </script>
+  </body>
+</html>

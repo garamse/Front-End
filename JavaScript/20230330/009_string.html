@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>string</title>
+  </head>
+  <body>
+    <script>
+      let txt = "ABCDEFGHIJK";
+
+      console.log(txt + txt);
+      console.log(txt[0]); // Sass만 1부터, 다른 프로그래밍 언어는 0부터 시작
+      console.log(txt[-1]); // jS에서 마이너스 인덱싱을 허락하지 않습니다.
+
+      console.log(txt.length); // 문자열의 길이 1부터
+      console.log(text.indexOf("E")); // 특정한 키워드의 위치를 알 수 있음 (인덱스 반환 0부터)
+      console.log(text.indexOf("Z")); // 없는 값은 -1 출력
+
+      console.log(txt.search("E")); // 특정한 키워드의 위치를 알 수 있음 (인덱스 반환 0부터)
+      console.log(txt.search("E")); // 없는 값은 -1 출력
+
+      // 정규 표현식
+      let regExp = /CD/;
+      console.log(txt.search(regExp));
+      console.log(txt.replace("ABC", "hello")); // 'helloDEFGHIJK'
+
+      let txt2 = "abcdeHelloabcde";
+      let regExp2 = /[A-Z]/g;
+      console.log(txt2.search(regExp2)); // 대문자 찾기
+
+      let txt3 = "abcdeHelloabcde";
+      let regExp3 = /[A-Z]/g;
+      console.log(txt2.replace(regExp2, "h")); // 대문자 찾고 'h'로 바꾸기
+
+      // *** ** * ** *** //
+
+      //https://codepen.io/kvendrik/pen/bGKeEE
+      // 자바스크립트 마크다운
+      /*
+      let md = '# hello world'
+      md = md.replace(/[\#]{6}(.+)/g, '<h6>$1</h6>');
+      md = md.replace(/[\#]{5}(.+)/g, "<h5>$1</h5>");
+      md = md.replace(/[\#]{4}(.+)/g, "<h4>$1</h4>");
+      md = md.replace(/[\#]{3}(.+)/g, "<h3>$1</h3>");
+      md = md.replace(/[\#]{2}(.+)/g, "<h2>$1</h2>");
+      md = md.replace(/[\#]{1}(.+)/g, "<h1>$1</h1>");*/
+
+      let md = "# hello world";
+      md = md.replace(/[\#]{1} (.+)/g, "<h1>$1</h1>");
+
+      let md2 = '# hello world'
+      md = md2.replace('# ', '<h1>') + '</h1>'
+    </script>
+  </body>
+</html>
