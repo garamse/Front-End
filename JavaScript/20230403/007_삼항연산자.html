@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>삼항연산자</title>
+  </head>
+  <body>
+    <script>
+      // 3항 연산자
+      // 조건식 ? 참일 경우 실행되는 표현식 : 거짓일 경우 실행되는 표현식
+
+      /* const sale = true;
+      const price = sale ? 100 : 200; // sale이 true라면 100,false라면 200이 price로 들어간다.
+      console.log(price);*/
+
+      /* const price = 7000;
+      const message = price >= 5000 ? '비싸요' : '저렴해요';
+      console.log(message);
+      */
+
+      const price = 7500;
+      const message =
+        price >= 9000 ? "비싸요" : price >= 7000 ? "적절해요" : "저렴해요";
+      console.log(message);
+
+      // 실습
+
+      /*
+      통장에 10000원 초과해서 있으면 '부자' 통장에 10000원 이하 있으면 '부를 바라는 자'
+
+      const money > 10000 ? '부자' : '부를 바라는 자 '
+      
+      통장에 100000원 초과해서 있으면 '초부자' 10000원 초과해서 있으면 '부자' 10000 이하면 부를 바라는자
+
+      const money = 5000;
+      const result = (money > 100000) ? '초부자' : (money > 10000) ? '부자' : '부를 바라는자';
+
+      */
+
+
+    </script>
+  </body>
+</html>
