@@ -122,7 +122,7 @@ shift 배열의 앞에 값을 꺼낸 뒤 그 값 반환
 unshift 배열의 맨 앞에 값을 추가
 push 배열의 맨 뒤에 값을 추가*/
 
-// arr.splice(start, deleteCount, items) -> 원본을 건드리지 않는다
+// arr.splice(start, deleteCount, items) -> 원본 배열이 바뀐다.
 const arr = [1, 2, 3];
 arr.splice(1, 0, 4); // arr에 1번째에 아무것도 삭제하지 않고 4를 넣겠다. [1, 4, 2, 3]
 
@@ -155,7 +155,7 @@ const arr = [10, 20, 30, 40, 50];
 arr.splice(1);
 arr;
 
-// arr.slice(start, end) -> 원본을 건드린다
+// arr.slice(start, end) -> 원본 배열은 바뀌지 않는다.
 const myArray = ["apple", "banana", "cherry", "durian", "elderberry"];
 console.log(myArray.slice(1, 4)); // ['banana', 'cherry', 'durian']
 console.log(myArray); // ['apple', 'banana', 'cherry', 'durian', 'elderberry']
