@@ -73,7 +73,7 @@
     content: "";
     width: 22px;
     height: 22px;
-    background-image: url(images_login/icons.png); /* 전체로 아이콘 이미지 배경으로 깔고  하나하나 포지션만 바꿔주기 */
+    background-image: url(images_login/logo_sprite.png); /* 전체로 아이콘 이미지 배경으로 깔고  하나하나 포지션만 바꿔주기 */
 }
 
 .link-sns-login.icon-facebook {
