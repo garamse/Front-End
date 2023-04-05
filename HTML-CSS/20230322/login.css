@@ -125,7 +125,8 @@ body {
   height: 22px;
   margin-right: 8px;
   vertical-align: -5px;
-  background: url("images_login/check_sprite.png") -52px -10px;
+  /*background: url("images_login/check_sprite.png") -52px -10px; splite 기법*/
+  background: url("images_login/check_retina.png") -10px -10px/ 84px 42px; /* 2배 되는 이미지로 설정하여 반으로 줄이는 retina 기법*/
 }
 
 .form-login .inp-hold:focus-visible + .labl-hold::before {
@@ -134,7 +135,8 @@ body {
 }
 
 .form-login .inp-hold:checked + .labl-hold::before {
-  background: url("images_login/check_sprite.png") -10px -10px;
+  /*background: url("images_login/check_sprite.png") -10px -10px; sprite 기법*/
+  background: url("images_login/check_retina.png") -52px -10px / 84px 42px; /* 2배 되는 이미지로 설정하여 반으로 줄이는 retina 기법*/
 }
 
 .link-userinfo {

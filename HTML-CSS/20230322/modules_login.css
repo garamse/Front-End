@@ -1,105 +1,110 @@
 /* 모듈 */
 /* 로그인 버튼 모듈 */
 .btn-login {
-    width: 100%;
-    padding: 17px 0 15px;
-    line-height: 28px;
-    font-size: 22px;
-    font-weight: bold;
-    border: none;
-    border-radius: 5px;
-    background: #2F80ED;
-    color: #fff;
-    cursor: pointer;
+  width: 100%;
+  padding: 17px 0 15px;
+  line-height: 28px;
+  font-size: 22px;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  background: #2f80ed;
+  color: #fff;
+  cursor: pointer;
 }
 
 .btn-close {
-    /* width: 16px;
+  /* width: 16px;
     height: 16px; */
-    background-color: #fff;
-    border: none;
-    cursor: pointer;
+  background-color: #fff;
+  border: none;
+  cursor: pointer;
 }
 
 /* 인풋 모듈 */
 .module-inp .inp-login {
-    display: block;
-    width: 100%;
-    padding: 15px 16px 15px;
-    border: 1px solid #C4C4C4;
-    border-radius: 5px;
-    font-weight: 500;
+  display: block;
+  width: 100%;
+  padding: 15px 16px 15px;
+  border: 1px solid #c4c4c4;
+  border-radius: 5px;
+  font-weight: 500;
 }
 
 .module-inp.module-inp-id.error .inp-login {
-    position: relative;
-    border: 2px solid #F4492E;
+  position: relative;
+  border: 2px solid #f4492e;
 }
 
 .module-inp .inp-error {
-    display: none;
-    margin: 6px 0 0 4px;
-    font-size: 14px;
-    line-height: 18px;
-    color: #F4492E;
-    text-align: left;
+  display: none;
+  margin: 6px 0 0 4px;
+  font-size: 14px;
+  line-height: 18px;
+  color: #f4492e;
+  text-align: left;
 }
 
 .module-inp.error .inp-error {
-    display: block;
-
+  display: block;
 }
 
-.module-inp~.module-inp {
-    margin-top: 10px;
+.module-inp ~ .module-inp {
+  margin-top: 10px;
 }
 
 /* 소셜 로그인 버튼 모듈 */
 .link-sns-login {
-    display: block;
-    padding: 15px 14px;
-    border: 1px solid #767676;
-    border-radius: 5px;
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 20px;
-    text-align: center;
-    color: #767676;
+  display: block;
+  padding: 15px 14px;
+  border: 1px solid #767676;
+  border-radius: 5px;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 20px;
+  text-align: center;
+  color: #767676;
 }
 
 [class^="icon"]::before {
-    position: absolute;
-    display: block;
-    content: "";
-    width: 22px;
-    height: 22px;
-    background-image: url(images_login/logo_sprite.png); /* 전체로 아이콘 이미지 배경으로 깔고  하나하나 포지션만 바꿔주기 */
+  position: absolute;
+  display: block;
+  content: "";
+  width: 22px;
+  height: 22px;
+  /* background-image: url(images_login/logo_sprite.png); 전체로 아이콘 이미지 배경으로 깔고  하나하나 포지션만 바꿔주기 (sprite 기법으로 하나의 이미지 사용) */
+  background-image: url("images_login/logo_retina.png");
+  background-size: 116px 83px; /* 2배 되는 이미지로 설정하여 반으로 줄이는 retina 기법*/
 }
 
 .link-sns-login.icon-facebook {
-    border: 1px solid #2D9CDB;
+  border: 1px solid #2d9cdb;
 }
 
 .link-sns-login.icon-naver {
-    border: 1px solid #00BF18;
+  border: 1px solid #00bf18;
 }
 
 .link-sns-login.icon-kakao {
-    border: 1px solid #F2C94C;
+  border: 1px solid #f2c94c;
 }
 
 .icon-google::before {
-    background-position: -10px -10px;
+  /*background-position: -10px -10px; sprite 기법*/
+  background-position: -13px -12px;
 }
 
 .icon-naver::before {
-    background-position: -52px -10px;
+  /* background-position: -52px -10px; sprite 기법*/
+  background-position: -54px -9px;
 }
 
 .icon-kakao::before {
-    background-position: -10px -52px;
+  /* background-position: -10px -52px; sprite 기법*/
+  background-position: -10px -54px;
 }
 
 .icon-facebook::before {
-    background-position: -91px -10px;
+  /* background-position: -91px -10px; sprite 기법*/
+  background-position: -92px -10px;
 }
