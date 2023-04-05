@@ -73,6 +73,7 @@
     content: "";
     width: 22px;
     height: 22px;
+    background-image: url(images_login/icons.png); /* 전체로 아이콘 이미지 배경으로 깔고  하나하나 포지션만 바꿔주기 */
 }
 
 .link-sns-login.icon-facebook {
@@ -88,18 +89,17 @@
 }
 
 .icon-google::before {
-    background: url("images_login/icon_google.png") no-repeat;
+    background-position: -10px -10px;
 }
 
 .icon-naver::before {
-    background: url("images_login/icon_naver.png") no-repeat;
+    background-position: -52px -10px;
 }
 
 .icon-kakao::before {
-    background: url("images_login/icon_kakao.png") no-repeat;
+    background-position: -10px -52px;
 }
 
 .icon-facebook::before {
-    height: 24px;
-    background: url("images_login/icon_facebook.png") center no-repeat;
+    background-position: -91px -10px;
 }
