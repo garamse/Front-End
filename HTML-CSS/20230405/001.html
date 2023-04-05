@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>반응형 이미지</title>
+    <style>
+      body {
+        margin: 0;
+      }
+
+      img {
+        width: 100%;
+        /* max-width: 100% */
+      }
+
+      article {
+        width: 100vw;
+        height: 100vh;
+        /*background: url(./logo_google.jpeg) black center / contain no-repeat;백그라운드 색을 지정해 자연스럽게 보이게한다. 컨테이너는 이미지가 잘리지 않는다.*/
+        background: url(./63919_93359_5612.jpeg) center/ cover no-repeat; /* 커버는 전체를 완전히 덮지만 이미지가 잘려질 수 있다.*/
+      }
+    </style>
+  </head>
+  <body>
+    <article></article>
+    <!--<img src="./63919_93359_5612.jpeg" alt="안보현 이미지"> -->
+  </body>
+</html>
