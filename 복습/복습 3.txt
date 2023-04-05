@@ -1,0 +1,108 @@
+<조건문 - if>
+
+if(조건)문은 괄호 안에 들어가는 조건을 평가하는데, 그 결과가 true이면 코드 블록이 실행된다.
+
+const x = 10, y = 20;
+
+if (x == y) {
+
+    document.write("x와 y는 같습니다.");
+
+}
+
+if (x < y) {
+
+    document.write("x가 y보다 작습니다.");
+
+}
+
+if (x > y) {
+
+    document.write("x가 y보다 큽니다.");
+} // 실행될 실행문이 한 줄뿐이라면 중괄호({})를 생략할 수 있지만 생략하지 않는 것을 권장
+
+-------------------------------
+
+<else 문>
+
+if 문과 같이 사용할 수 있는 else 문은 if 문의 표현식 결과가 거짓(false)일 때 주어진 실행문을 실행
+
+const x = 10, y = 20;
+
+if (x == y) {
+
+    document.write("x와 y는 같습니다.");
+
+} else {
+
+    if (x < y)
+
+        document.write("x가 y보다 작습니다.");
+
+    else {
+
+        document.write("x가 y보다 큽니다.");
+    }
+}
+
+------------------------
+
+<else if문>
+
+else if 문은 if 문처럼 표현식을 설정할 수 있으므로, 중첩된 if 문을 좀 더 간결하게 표현할 수 있다. 하나의 조건문 안에서 if 문과 else 문은 단 한 번만 사용될 수 있지만 else if 문은 여러 번 사용되어 다양한 조건을 설정할 수 있다.
+
+const x = 10, y = 20;
+
+if (x == y) {
+
+    document.write("x와 y는 같습니다.");
+
+} else if (x < y) {
+
+    document.write("x가 y보다 작습니다.");
+
+} else { // x > y인 경우
+
+    document.write("x가 y보다 큽니다.");
+
+}
+
+---------------------
+
+< 조건문 - 삼항연산자>
+
+삼항 연산자는 유일하게 피연산자를 세 개나 가지는 조건 연산자로 해당 연산자는 if...else문의 대체재로 빈번히 사용된다. 
+
+물음표(?) 앞의 표현식에 따라 결과값이 참이면 반환값1을 반환하고, 결괏값이 거짓이면 반환값2를 반환한다.
+
+=> 표현식 ? 반환값1 : 반환값2
+
+삼항연산자로 null 일 수 있는 값을 처리 할 때 흔히 사용된다.
+let greeting = person => {
+  let name = person ? person.name : `stranger`
+  return `Howdy, ${name}`
+}
+
+console.log(greeting({name: `Alice`}));  // "Howdy, Alice"
+console.log(greeting(null));             // "Howdy, stranger"
+
+(if...else문을 간략하게 적을 때 사용된다.)
+
+function example(…) {
+    if (condition1) { return value1; }
+    else if (condition2) { return value2; }
+    else if (condition3) { return value3; }
+    else { return value4; }
+}
+
+function example(…) {
+    return condition1 ? value1
+         : condition2 ? value2
+         : condition3 ? value3
+         : value4;
+}
+
+
+
+
+
