@@ -100,15 +100,20 @@ let user = [
   },
 ];
 
-// for in 문으로 풀기
-
-let age = 0;
-
+// for of
+let s = 0
 for (const i of user) {
-  age += i.age;
+    s += i.age
 }
+console.log((s / user.length).toFixed(2))
 
-console.log(age / user.length).toFixed(2); // 소수점 2자리까지
+// for in
+
+let s = 0
+for (const i in user) {
+    s += user[i].age
+}
+console.log((s / user.length).toFixed(2))
 
 // for문으로 풀기
 
