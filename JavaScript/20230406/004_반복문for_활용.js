@@ -13,11 +13,11 @@ for (let i = 0; i < arr.length; i++) {
 let arr1 = [10, 20, 30, 40, 50];
 let obj1 = { one: 10, two: 20 };
 for (const i in arr1) {
-  console.log(arr1[i]); // index를 가져온다 0,1,2,3,4
+  console.log(arr1[i]); 
 }
 
 for (const i in obj1) {
-  console.log(obj1[i]); // key를 가져온다. one, two
+  console.log(obj1[i]); 
 }
 
 // 100까지 더하기
@@ -33,7 +33,7 @@ let arr2 = [10, 20, 30, 40, 50];
 let obj2 = { one: 10, two: 20 };
 
 for (const item of arr2) {
-  console.log(item); // value를 가져온다. 10,20,30,40,50
+  console.log(item); 
 }
 
 // 배열 안 요소 더하기
