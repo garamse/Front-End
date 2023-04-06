@@ -123,7 +123,7 @@ for (let i = 0; i < user.length; i++) {
   userage += user[i]["age"];
 }
 
-console.log(userage / user.length.toFixed(2)); // 소수점 2자리까지
+console.log((userage / user.length).toFixed(2)); // 소수점 2자리까지
 
 // 심화 (age가 없는 객체가 있을 때)
 let user2 = [
