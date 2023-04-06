@@ -125,8 +125,8 @@ for (let i = 0; i < user.length; i++) {
 
 console.log((userage / user.length).toFixed(2)); // 소수점 2자리까지
 
-// 심화 (age가 없는 객체가 있을 때)
-let user2 = [
+//심화
+  let user2 = [
   {
     _id: "642e3071c61a23c70ae6076b",
     index: 0,
@@ -155,7 +155,7 @@ for (const i of user2) {
   age2 += i.age ?? 0;  // i에 age가 없으면(null, undefined...) 0 취급을 한뒤 age2에 넣겠다
 }
 
-console.log(age2 / user2.length).toFixed(2);
+console.log((age2 / user2.length).toFixed(2));
 
 
 
