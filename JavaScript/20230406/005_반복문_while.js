@@ -14,9 +14,11 @@ do {
 
 console.log("입력한 숫자는 " + input + "입니다.");
 
+// do while문은 꼭 한번은 반복함.
+
 let input;
 
-do {
+do {    
   input = confirm("다음에도 저희와 함께 하시겠습니까?");
 } while (!input);
 
@@ -25,10 +27,14 @@ console.log("감사합니다.");
 
 // 암기코드 1 (구구단)
 // for문
-for (let i = 2; i < 10; i++) {
-  for (let j = 1; j < array.length; j++) {
-    console.log(`${i} * ${j} = ${i * j}`);
-  }
+let a = 2;
+while(a < 10) {
+    let b = 1;      // 꼭 여기서 b를 초기화를 시켜줘야 3,4,5,6,7,8,9단까지 출력할 수 있음.
+    while(b < 10) {
+        console.log(`${a} * ${b} = ${a * b}`);
+        b++;
+    }
+    a++;
 }
 
 // while문
@@ -53,7 +59,7 @@ let result1 = "";
 let count = 0;
 
 while (count < t.length) {
-  result1 = s[count] + result;
+  result1 = t[count] + result;
   count++;
 }
 console.log(result);

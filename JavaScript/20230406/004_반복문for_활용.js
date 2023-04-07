@@ -13,11 +13,11 @@ for (let i = 0; i < arr.length; i++) {
 let arr1 = [10, 20, 30, 40, 50];
 let obj1 = { one: 10, two: 20 };
 for (const i in arr1) {
-  console.log(arr1[i]); // index를 가져온다 0,1,2,3,4
+  console.log(arr1[i]); 
 }
 
 for (const i in obj1) {
-  console.log(obj1[i]); // key를 가져온다. one, two
+  console.log(obj1[i]); 
 }
 
 // 100까지 더하기
@@ -33,7 +33,7 @@ let arr2 = [10, 20, 30, 40, 50];
 let obj2 = { one: 10, two: 20 };
 
 for (const item of arr2) {
-  console.log(item); // value를 가져온다. 10,20,30,40,50
+  console.log(item); 
 }
 
 // 배열 안 요소 더하기
@@ -100,15 +100,20 @@ let user = [
   },
 ];
 
-// for in 문으로 풀기
-
-let age = 0;
-
+// for of
+let s = 0
 for (const i of user) {
-  age += i.age;
+    s += i.age
 }
+console.log((s / user.length).toFixed(2))
 
-console.log(age / user.length).toFixed(2); // 소수점 2자리까지
+// for in
+
+let s = 0
+for (const i in user) {
+    s += user[i].age
+}
+console.log((s / user.length).toFixed(2))
 
 // for문으로 풀기
 
@@ -118,10 +123,10 @@ for (let i = 0; i < user.length; i++) {
   userage += user[i]["age"];
 }
 
-console.log(userage / user.length.toFixed(2)); // 소수점 2자리까지
+console.log((userage / user.length).toFixed(2)); // 소수점 2자리까지
 
-// 심화 (age가 없는 객체가 있을 때)
-let user2 = [
+//심화
+  let user2 = [
   {
     _id: "642e3071c61a23c70ae6076b",
     index: 0,
@@ -150,7 +155,7 @@ for (const i of user2) {
   age2 += i.age ?? 0;  // i에 age가 없으면(null, undefined...) 0 취급을 한뒤 age2에 넣겠다
 }
 
-console.log(age2 / user2.length).toFixed(2);
+console.log((age2 / user2.length).toFixed(2));
 
 
 
