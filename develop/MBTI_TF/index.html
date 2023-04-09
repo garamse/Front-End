@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MBTI TF 테스트 만들기</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+      integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body class="container">
+    <article class="start">
+      <img class="main mt-5" src="main.jpg" alt="메인 이미지" />
+      <h1 class="text-center">나의 T/F 퍼센티지는?</h1>
+      <button
+        type="button"
+        class="btn btn-success mt-5 btn-lg"
+        onclick="start();"
+      >
+        테스트 시작!
+      </button>
+    </article>
+
+    <article class="question">
+      <div class="progress mt-5">
+        <div
+          class="progress-bar"
+          role="progressbar"
+          aria-label="Basic example"
+          style="width: calc(100 / 10 * 1%)"
+        ></div>
+      </div>
+      <h2 id="title" class="text-center mt-5">문제</h2>
+      <input id="type" type="hidden" value="TF" />
+      <button id="A" type="button" class="btn btn-success btn-lg mt-5">
+        A
+      </button>
+      <button id="B" type="button" class="btn btn-success btn-lg mt-5">
+        B
+      </button>
+    </article>
+
+    <article class="result">
+      <img id="img" class="rounded-circle mt-5" src="dog.jpg" alt="강아지" />
+      <h2 id="category" class="text-center mt-5">유형</h2>
+      <h3 id="name" class="text-center mt-5">유형별명</h3>
+      <h4 id="explain" class="text-center mt-5">설명</h4>
+    </article>
+
+    <input type="hidden" id="TF" value="0" />
+
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      let num = 1;
+      let q = {
+        1: {
+          title:
+            "'아프면 병원을 가'라는 말을 이해하는 방식이 나와 더 가까운 것은?",
+          type: "TF",
+          A: "병원을 가",
+          B: "내 앞에서 귀찮게 징징거리지말고 병원가 내가 의사야? 니가 아픈데 뭐 어쩌라고",
+        },
+        2: {
+          title: "누군가 본인을 싫어하는 걸 알았을때 나의 반응은 ?",
+          type: "TF",
+          A: "날 왜? (순수한 궁금증) 싫어하든지 말든지",
+          B: "나를 왜 싫어하지?.. 내가 기분나쁘게 한적 있나?",
+        },
+        3: {
+          title: "친구가 시험에 떨어져서 슬퍼하는 상황에서 나는 ?",
+          type: "TF",
+          A: "무슨 시험인데? 몇점이 커트라인이야?",
+          B: "열심히 했는데 속상하겠다 괜찮아 다음엔 꼭 붙을거야",
+        },
+        4: {
+          title: "친구가 헤어졌다고 말하며 울고있을 때 나는 ?",
+          type: "TF",
+          A: "슬픈 마음은 이해되지만 어떻게 위로할지 모르겠다",
+          B: "그 맘 잘알지... 친구한테 이입하다 보니 눈물이 고인다",
+        },
+        5: {
+          title:
+            "'넌 대충대충하는거같은데 왜이렇게 결과물이 좋아?' 라는 말을 들었을 때 나는?",
+          type: "TF",
+          A: "어 나 재능있나? 고마워",
+          B: "뭐? 나 엄청 열심히했는데 뭔소리야...",
+        },
+        6: {
+          title: "'음... 생각해볼게'라는 말은 언제 쓰나요?",
+          type: "TF",
+          A: "말 그대로 생각할 시간이 필요함",
+          B: "거절하기 그러니 일단 잠시 보류",
+        },
+        7: {
+          title:
+            "나 오늘 이사했는데 문 닫으면 페인트 냄새 때문에 머리가 깨질것 같고 문열면 매연때문에 죽을것같음 ㅠㅠ 라는 친구의 말에 나의 대답은?",
+          type: "TF",
+          A: "그럼 마스크 쓰고 문 열고 있는건 어때?",
+          B: "괜찮아? 머리 많이 아프겠다.. 둘다 몸에 안좋을텐데 ㅠㅠ",
+        },
+        8: {
+          title: "친구에게'나 차 사고 났어'라고 말한 이유는? ",
+          type: "TF",
+          A: "알아두라고",
+          B: "걱정해줘",
+        },
+        9: {
+          title: "친구가 약속시간에 늦었을 때",
+          type: "TF",
+          A: "이유가 있으면 마음이 풀린다.",
+          B: "사과를 하면 마음이 풀린다.",
+        },
+      };
+
+      let result = {
+        T: {
+          100: {
+            name: "AI로 오해 받는 겉바속바 T",
+            explain:
+              "T 100%인 사람보고 감정 하나 없는 로봇으로 표한하더라구요? 저도 감정 있어요…! 물론 감정의 폭이 그리 크지는 않아요 제 감정에 '속상하다'는 거의 없긴 한 것 같아요 상황이 이해되어야 공감해줘야 하는거 아닌가요?? 이런 저의 성향 때문에 서운해하고 상처 받는 친구들이 있더라구요 그 친구들은 F일듯 !",
+            img: "T.jpg",
+          },
+          50: {
+            name: "감정 한 스푼 더한 사회화된 T",
+            explain:
+              "사회화된 T라는 얘기를 자주 들어요. 나한테 상처받은 수많은 사람들로부터 학습됐어요 촉촉한 감성을 가지는 법, 조금씩 배워가고 있다구요! T는 감정 없는 로봇이라고 할 때 공감이 안됐어요 저도 역지사지로 생각하면 공감 제법 잘하거든요",
+            img: "T.jpg",
+          },
+        },
+        F: {
+          100: {
+            name: "넌 나고 난 너야 겉촉속촉 F",
+            explain: "나의 모든 일상 하나하나를 다 공유해요. 일상 카톡 제일 많이 보내는 사람이 저에요! '넌 진짜 공감능력이 좋은 것 같아'하는 얘기를 자주 들어요. 안친한 사람이 나한테 고민을 털어놓으면 감동 받아요",
+            img: "F.jpg",
+          },
+          50: {
+            name: "감정 속에 스치는 이성 메마른 F",
+            explain: "친구가 힘들다고 할 때, 무슨 일인지 먼저 말 안하면 절대 물어보지 않아요. '먼저 말 안 하는걸 보니, 말하기 싫어하는거일 수 있으니 물어보지 말아야지!' 하는 생각이에요. 엄청 친한 사이가 아니고서는 서운한 점을 잘 얘기 안해요",
+            img: "F.jpg",
+          },
+        },
+      };
+
+      function start() {
+        $(".start").hide();
+        $(".question").show();
+        next();
+      }
+
+      $("#A").click(function () {
+        let type = $("#type").val();
+        let preValue = $("#" + type).val();
+        $("#" + type).val(parseInt(preValue) + 1);
+        next();
+      });
+
+      $("#B").click(function () {
+        next();
+      });
+
+      function next() {
+        if (num == 10) {
+          $(".question").hide();
+          $(".result").show();
+          let level = "";
+          $("#TF").val() < 5 ? (level += "F") : (level += "T"); /* 5문제 이하일 땐 F 5문제 이상일 땐 T 출력 */
+          let rate = "";
+         ( $("#TF").val() > 7 || $("#TF").val())  < 2 ? (rate += 100) :  (rate += 50) /* 9문제 중 8개 이상이면 100%, 5개 이상이면 7이하면 50퍼로 설정 */
+            
+          $("#category").html(`나는 ${level} ${rate}% 인간!`); /* .html을 사용해서 html에 넣어줌 level에는 T/F가 들어가 있고 rate는 100,50이 들어가 있다. */
+          $("#name").html(result[level][rate]["name"]);
+          $("#explain").html(result[level][rate]["explain"]);
+          $("#img").attr("src", result[level][rate]["img"]);
+        } else {
+          $(".progress-bar").attr("style", "width: calc(100/9*" + num + "%)");
+          $("#title").html(q[num]["title"]);
+          $("#type").val(q[num]["type"]);
+          $("#A").html(q[num]["A"]);
+          $("#B").html(q[num]["B"]);
+          num++;
+        }
+      }
+
+    </script>
+  </body>
+</html>
