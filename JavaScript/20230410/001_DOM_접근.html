@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DOM 트리에 접근</title>
+  </head>
+  <body>
+    <p>hello</p>
+    <p>hello</p>
+    <p id="myTxt">hello</p>
+    <p class="txt1">hello</p>
+    <p class="txt1">hello</p>
+
+    점심 식단
+    <article id="container">
+      <ul>
+        <li>탕수육</li>
+        <li class="item-second">유산슬</li>
+        <li>짜장면</li>
+      </ul>
+    </article>
+    저녁 식단
+    <article>
+      <ul>
+        <li>된장국</li>
+        <li class="item-second">김치찌게</li>
+        <li>해장국</li>
+      </ul>
+    </article>
+
+    <script>
+      document.getElementById("myTxt"); // 해당하는 ID를 가진 요소에 접근하기
+      document.getElementsByTgaName("p"); // 해당하는 태그를 가진 모든 요소에 접근하기 (태그로만 접근 가능)
+      document.getElementsByClassName("txt1"); // 해당하는 클래스를 가진 모든 요소에 접근하기
+
+      // 변수에 저장 후 사용
+      const element = document.getElementsByClassName("txt1");
+
+      // 문제 (배운 문법을 바탕으로 HTML 요소들 중 첫번째 item-second 와 첫번째 li 를 콘솔로 출력해보세요)
+
+      /* 지정 문서를 읽게 한 뒤 뽑아오기 (document 지정)
+
+        const container = document.getElementById("container");
+
+        container.getElementsByTagName("li")[0]; 배열같은 객체로 반환 된다. 
+        (유사배열객체) 그러므로 []로 키 값을 호출
+
+        container.getElementsByClassName("item-second"); 또는 
+
+        container.getElementsByTagName("li")[1];
+
+        */
+
+      // 전체 문서를 읽고 뽑아오기 (document)
+
+      document.getElementsByTagName("li")[0]; // 배열같은 객체로 반환 된다. (유사배열객체) 그러므로 []로 키 값을 호출
+
+      document.getElementsByClassName("item-second")[0]; // 또는
+      document.getElementsByTagName("li")[1];
+
+      // (querySelector사용하기)
+
+      const container = document.getElementById("container");
+
+      container.querySelector("li"); // 찾고자 하는 요소가 여러개라면 제일 첫번째를 반환한다.
+
+      container.querySelector(".item-second"); // .아이디로 찾기 #클래스로찾기 (css 선택자)
+      container.querySelector("li:last-child"); // (css 선택자 모두 사용 가능) 짜장면 출력
+
+      container.querySelectorAll("li"); // 모든 요소에 접근하기
+
+      // 요소를 만들고 html에 배치하기
+
+      const listItem = document.createElement("li");
+      container.append(listItem);
+      container.querySelectorAll("li"); // 배치된걸 확인가능
+
+      // 요소를 삭제
+
+      const target = document.querySelector(".item-second");
+      target.remove();
+
+      // 요소 안 텍스트 바꾸기 (NodeList는 가지고있던 정보를 업데이트 했을 때는 즉시 반영된다.)
+
+      container.querySelector(".item-second").textContent  = "라조기";
+      container.querySelector(".item-second").classList.add("new");
+      
+
+    </script>
+  </body>
+</html>
