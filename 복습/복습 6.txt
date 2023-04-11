@@ -1,0 +1,324 @@
+<요소 제어>
+parentElement.insertBefore(target, location); 
+target요소를 parentElement의 자식인 location 위치 앞으로 이동
+
+<div id="parentElement">
+      <span id="childElement">hello guys~</span>
+</div>
+
+<script>
+      const span = document.createElement("span"); // span 요소 생성
+      const sibling = document.createElement("childElement"); // childElement 요소 생성
+      const parentDiv = document.createElement("parentElement"); // parentElement 요소 생성
+      parentDiv.insertBefore(span, sibling); // 삽입할 요소, 삽입 위치
+</script>
+
+--------------------------------------------
+
+<innerHTML, innerText, textContent>
+
+(innerHTML) : innerHTML은 'Element'의 속성으로, element내에 포함 된 HTML 또는 XML 마크업을 가져오거나 태그와 함께 입력하여 내용을 직접 설정할 수 있다. 즉, innerHTML을 사용하면 내부 HTML 코드를 JavaScript 코드에서 새 내용으로 쉽게 변경할 수 있는 것이다.
+
+// html 코드와 함께 작성 가능
+document.documentElement.innerHTML = "<p>innerHTML</p>"
+// 스타일 적용
+document.documentElement.innerHTML = 
+  "<span style='color:blue'>innerHTML</span>"
+
+// 이런 식으로 빈 문자열을 넣으면 body의 전체 내용을 지울 수 있다.
+document.body.innerHTML = "";
+
+
+(innerText) : innerText는 'Element'의 속성으로, element내에서 사용자에게 보여지는 text값들을 가져오거나 설정할 수 있다. 
+
+// innerHTML과 달리 text값만 다루기 때문에 html태그 사용 불가능
+document.documentElement.innerText = "innerText"
+
+// html태그를 넣으면 태그도 text값으로 인식하고 
+// <p>innerText</p> 문자열 그대로 적용함.
+document.documentElement.innerText = "<p>innerText</p>"
+
+----------------------------------------------
+
+!!!innerHTML과 innerText 비교!!!
+
+const innerT = document.getElementById('innerT');
+innerT.innerText = "<div style='color:red'>innerText</div>";
+console.log(innerT)
+// 스타일 적용되지 않은 기본 폰트로 <div style='color:red'>innerText</div> 출력
+
+const innerH = document.getElementById('innerH');
+innerH.innerHTML = "<div style='color:red'>innerHTML</div>";
+console.log(innerH)
+// 스타일 적용된 빨간색 폰트로 innerHTML 출력
+
+-----------------------------------------------
+
+(textContent) : textContent는 'Node'의 속성으로, 사용자에게 보여지는 text값만 읽어오는 innetText와는 달리 <script>나 <style> 태그에 상관없이 해당 노드가 가지고 있는 텍스트 값을 모두 읽어온다.
+
+예제.
+
+<div id='content'>
+  안녕~ 
+  <span style='display:none'>innerText는 나를 볼 수 없어😏</span>
+</div>
+
+//////////////////////////////////////////
+
+console.log(content.innerHTML); 
+
+"안녕~ 
+<span style='display:none'>innerText는 나를 볼 수 없어😏</span> (html 전체를 다 가져옴)
+"
+-- innerHTML 출력 결과 --
+  
+console.log(content.innerText); 사용자에게 보여지는 텍스트만 가져옴
+
+"안녕~" (숨겨진 텍스트는 사용자에게 보여지지 않기 때문에 안녕~만 가져옴)
+
+-- innerText 출력 결과 --
+  
+console.log(content.textContent);
+
+"안녕~
+innerText는 나를 볼 수 없어😏" (숨겨진 텍스트까지 포함해서 텍스트값을 모두 다 가져옴)
+
+!!!!!!!!!!!!!!!!!!!!!결론!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+innerHTML은 요소 내에 있는 HTML과 XML 모두를 의미하고,
+innerText는 요소 내에서 사용자에게 보여지는 text를 의미하고,
+textContent는 script나 style 태그와 상관없이 해당 노드가 가지고 있는 text를 의미한다.
+
+------------------------------------------------
+
+태그의 속성이란 ?
+<p style="color:red" onClick="alert(1);" class="hello"></p>
+위 코드에서 style, onClick, class를 의미
+
+1. 요소의 스타일을 제어하는 style 객체 (.style)
+
+요소는 그 안에 CSSStyleDeclaration 객체라 불리는 style 객체가 존재하며 이 객체는 요소의 스타일 정보를 가지고 있다. 스타일과 관련한 프로퍼티와 메소드를 지원한다.
+하지만 오직 인라인 스타일에만 적용된다.
+
+(style 객체의 속성 식별자 규칙)
+
+- 속성 이름이 한 글자라면 그대로 사용 (`height`, `color` …)
+- 속성 이름이 대쉬(-) 를 통해 여러 단어로 나눠져있는 경우는 카멜케이스로 사용
+  (background-image ⇒ backgroundImage)
+- float 속성의 경우 이미 자바스크립트의 예약어로 존재하기 때문에 cssFloat로 사용
+
+style 객체를 통해 설정된 스타일은 CSS inline 스타일과 동일한 가중치를 가진다. 때문에 CSS를 통해 수정의 여지가 있는 스타일에는 많이 사용되지 않는다. 이럴 경우 classList를 이용한 클래스 제어가 더 효과적이다.
+
+<p>hello!</p>
+
+const target = document.querySelector("p");
+const txtColor = target.style.color; // 현재 스타일 컬러를 가져옴
+target.style.color = "red"; // 현재 스타일 컬러를 레드로 변경
+target.style.fontWeight = "bold"; // 현재 스타일 정보에 font-weight 속성이 없다면 bold로 추가
+target.style.color = null; // 현재 스타일 정보를 제거(초기화)한다.
+
+<속성에 접근하고 수정할 수 있는 Attribute 메소드>
+
+1. getAttribute : 선택한 요소(element)의 특정 속성(attribute)의 값을 가져옴, 주어진 속성이 존재 하지 않는다면, null ""(빈문자열) 을 반환한다. element.getAttribute('attributename')
+
+const jb = document.getElementById( 'xyz' ).getAttribute( 'title' );
+id의 값이 xyz인 요소의 title 속성 값을 변수 jb에 저장
+
+
+2. setAttribute : 지정된 요소의 속성 값을 설정한다. 속성이 이미 있으면 값은 업데이트, 속성이 없다면 지정된 이름과 값으로 새 속성이 추가된다. setAttribute(name, value)
+
+ <p><a id="abc" href="#">CODING FACTORY</a></p>
+
+ <script>
+      document.getElementById( 'abc' ).setAttribute( 'href', 'https://www.codingfactory.net'); 
+      id 값이 abc인 요소의 href 속성값을 변경하는 예제
+ </script>
+
+------------------------------------------------------
+
+<요소에 데이터를 저장하도록 도와주는 data속성>
+
+. data-* 속성은 표준이 아닌 속성이나 추가적인 DOM 속성, Node.setUserData()과 같은 다른 조작을 하지 않고도, 의미론적 표준 HTML 요소에 추가 정보를 저장할 수 있도록 해준다. 단,  data 속성의 이름에는 콜론(:) 이나 영문 대문자가 들어가서는 안됨
+
+<article id="electriccars"
+  data-columns="3"
+  data-index-number="12314"
+  data-parent="cars">
+</article>
+
+const article = document.getElementById('electriccars');
+
+article.dataset.columns // "3"
+article.dataset.indexNumber // "12314"
+article.dataset.parent // "cars"
+
+article.dataset.columns = 5와 같이 설정하면 해당 속성을 "5"로 변경가능
+
+-----------------------------------------
+
+<더 인접한 곳으로 정밀하게 배치하기>
+
+insertAdjacentHTML : HTML or XML 같은 특정 텍스트를 파싱하고, 특정 위치에 DOM tree 안에 원하는 node들을 추가한다. 이미 사용중인 element 는 다시 파싱하지 않는다.
+
+element.insertAdjacentHTML(position, text);
+
+들어갈 수 있는 position의 종류 
+
+1.'beforebegin' : element 앞에
+
+2.'afterbegin' : element 안에 가장 첫번째 child
+
+3.'beforeend' : element 안에 가장 마지막 child
+
+4.'afterend' : element 뒤에
+
+여기서 begin 이란 여는 태그를, end 란 닫는 태그를 의미
+
+참고 ! beforebegin , afterend position은 element의 부모가 존재해야 하고, node가 tree 안에 있어야 한다.
+
+<!-- beforebegin -->
+<p>
+<!-- afterbegin -->
+foo
+<!-- beforeend -->
+</p>
+<!-- afterend -->
+
+---------------------------------------------
+
+<DOM 안에서 노드 탐색하기>
+
+주의할점 !!!!
+1. Element를 붙이면 요소를 반환하고 붙이지 않으면 노드를 찾는다.
+2. HTML 요소 사이의 스페이스, 탭, 줄바꿈(개행) 등의 공백 문자는 텍스트 노드를 생성한다. 이를 공백 텍스트 노드라고 한다.노드를 탐색할 때는 공백 문자가 생성한 공백 텍스트 노드에 주의해야 한다.
+           
+Node.prototype.childNodes : 자식 노드를 모두 탐색하여 NodeList에 담아 반환한다. 요소 노드와 텍스트 노드를 포함한다.
+Element.prototype.children : 자식 노드 중에서 요소 노드만 모두 탐색하여 HTMLCollection에 담아 반환한다. 텍스트 노드는 포함하지 않는다
+Node.prototype.firstChild : 첫번째 자식 노드를 반환하며, 텍스트 노드이거나 요소 노드이다.
+Node.prototype.lastChild : 마지막 자식 노드를 반환하며, 텍스트 노드이거나 요소 노드이다.
+Element.prototype.firstElementChild : 첫 번째 자식 노드이며, 요소 노드만 반환한다.
+Element.prototype.lastElementChild : 마지막 자식 요소 노드이며, 요소 노드만 반환한다.
+
+Node.prototype.previousSibling : 부모노드가 같은 형제 노드 중에서 요소 노드와 텍스트 노드를 포함하여 자신의 이전 형제 노드를 반환한다
+Node.prototype.nextSibling : 부모노드가 같은 형제 노드 중에서 요소 노드와 텍스트 노드를 포함하여 자신의 이후 형제 노드를 반환한다
+Element.prototype.previousElementSibling : 부모노드가 같은 형제 노드 중에서 요소 노드만 포함하여 자신의 이전 형제 노드를 반환한다
+Element.prototype.nextElementSibling : 부모노드가 같은 형제 노드 중에서 요소 노드만 포함하여 자신의 이후 형제 노드를 반환한다
+
+--------------------------------
+
+<이벤트 객체> : DOM 표준을 준수하는 브라우저에서 이벤트 핸들러에 전달되는 매개변수는 event객체 하나뿐이다.
+DOM레벨과 상관없이 event객체가 전달되며 event객체에는 생성에 관여한 이벤트와 관련된 프로퍼티 및 메서드가 포함된다.
+
+<article class="parent">
+      <ol>
+        <li><button class="btn-first" type="button">버튼1</button></li>
+        <li><button type="button">버튼2</button></li>
+        <li><button type="button">버튼3</button></li>
+      </ol>
+</article>
+
+    <script>
+      const btnFirst = document.querySelector(".btn-first");
+      btnFirst.addEventListener("click", (event) => {
+        console.log(event);
+      });
+    </script>
+
+-------------------------------
+
+<이벤트 흐름>
+브라우저 화면에서 이벤트가 발생하면 브라우저는 가장 먼저 이벤트 대상을 찾기 시작한다.
+
+<body>
+    <div class="DIV1">
+      DIV1
+      <div class="DIV2">
+        DIV2
+        <div class="DIV3">DIV3
+        </div>
+      </div>
+    </div>
+  </body>
+
+캡처링 단계 : 브라우저가 이벤트 대상을 찾아갈 때는 가장 상위의 window 객체부터 document, body 순으로 DOM 트리를 따라 내려가는 것 
+
+const divs = document.querySelectorAll("div");
+
+const clickEvent = (e) => {
+  console.log(e.currentTarget.className);
+};
+
+divs.forEach((div) => {
+  div.addEventListener("click", clickEvent, { capture: true });  // true : 캡처링 단계의 이벤트가 발생하도록 함
+});
+
+DIV3 버튼을 눌렀을 경우
+
+출력 결과 : 위에서부터 찾아 내려오기 때문에 콘솔에는 DIV1, DIV2, DIV3이 순서대로 찍힐 것이다.
+
+
+버블링 단계 : 이벤트 대상을 찾아가는 과정에서 브라우저는 중간에 만나는 모든 캡처링 이벤트 리스너를 실행시키고, 이벤트 대상을 찾고 캡처링이 끝나면 이제 다시 DOM 트리를 따라 올라가며 만나는 모든 버블링 이벤트 리스너를 실행하는 것
+(자바스크립트는 기본적으로 버블링 발생)
+
+
+const divs = document.querySelectorAll("div");
+
+const clickEvent = (e) => {
+  console.log(e.currentTarget.className);
+};
+
+divs.forEach((div) => {
+  div.addEventListener("click", clickEvent);
+});
+
+DIV3 버튼을 눌렀을 경우
+
+출력 : DIV3, DIV2, DIV1 클릭 되어진 버튼부터 출력되고, document 객체를 만날 때 까지 이벤트 전파
+
+///////////////////
+
+그리고 이러한 과정에서 이벤트 리스너가 차례로 실행되는것을 이벤트 전파(event propagation)라고 한다.
+
+--------------------------------
+
+(이벤트 target) : 이벤트가 발생한 대상 객체를 가리킨다.  target 속성을 통해 이벤트 위임을 구현할 수 있다.
+
+(이벤트 currentTarget) : 이벤트 리스너가 연결된 요소가 참조되어 있다.
+
+<article class="parent">
+    <ol>
+        <li><button class="btn-first" type="button">버튼1</button></li>
+        <li><button type="button">버튼2</button></li>
+        <li><button type="button">버튼3</button></li>
+    </ol>
+</article>
+
+<script>
+    const parent = document.querySelector('.parent');
+    parent.addEventListener('click', function (event) {
+        console.log(event.target);
+        console.log(event.currentTarget);
+    })
+</script>
+
+(이벤트 위임) : 여러 개의 이벤트 리스너를 등록하지 않고 상위 요소에 하나의 이벤트 리스너만 등록하는 것 이를 이용해 이벤트 리스너가 없어도 마치 리스너가 있는 것 처럼 사용 할 수 있다.
+
+장점 : 메모리 사용량 감소
+
+ <script>
+        const parent = document.querySelector('.parent');
+        parent.addEventListener('click', function (event) {
+            console.log(event.target);
+            if (event.target.nodeName === "BUTTON") {
+                event.target.innerText = "버튼4";
+            }
+        })
+ </script>
+
+
+
+
+
+
+
+
