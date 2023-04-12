@@ -100,3 +100,17 @@ const test1 = [
 for (const [i, j, ...k] of test1) {
   console.log(i, j, k);
 }
+
+function hello(a, b, ...c) {
+  console.log(a, b, c)
+}
+
+hello(1, 2, 3, 4, 5, 6, 7)
+
+Math.max(...[10, 20, 30]);
+Math.min(...[10, 20, 30]);
+Math.max(...[10, 20, 30, [11, 12, 13, [29, 40, 50]]].flat(Infinity));
+
+// 자주 사용되는 코드
+const s = "hello world";
+[...s]  // s.split("") 
