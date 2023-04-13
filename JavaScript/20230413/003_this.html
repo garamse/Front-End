@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <title>this 예제</title>
+    </head>
+    <body>
+        <button id="btn1">클릭해봐요!</button>
+        <button id="btn2">클릭해봐요!</button>
+        <script>
+            let myObj = {
+                val1: 100,
+                func1: function () {
+                    console.log(this);
+                },
+            };
+
+            let test = myObj.func1;
+
+            let button1 = document.getElementById("btn1");
+            button1.addEventListener("click", myObj.func1);
+            // myObj.func1이 가리키고있는 함수를  button1가 클릭 되었을 때 직접 실행하게 되었다.
+            let button2 = document.getElementById("btn2");
+            button2.addEventListener("click", test);
+            // test가 가리키고있는 함수를  button2가 클릭 되었을 때 직접 실행하게 되었다.
+        </script>
+    </body>
+</html>
