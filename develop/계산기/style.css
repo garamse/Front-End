@@ -1,0 +1,64 @@
+/* reset */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body { 
+    background-color: royalblue;
+    display: flex;
+    justify-content: center;
+    align-items: center;      /* 계산기 중앙 정렬을 위한 flex */
+    height: 100vh;
+}
+
+.cal {
+    border: 1px solid black;
+    background-color: #ccc;
+    padding: 5px;
+    width: 287px;
+}
+
+.cal form {
+    display: grid;
+    grid-template-columns: repeat(4,65px); /*4열에 65px*/
+    grid-auto-rows: 65px; /* 행의 높이도 65px*/
+    gap: 5px;
+}
+
+.cal form input {
+    border: 2px solid black;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+.cal form input:hover {
+    box-shadow: 1px 1px 2px #333;
+}
+
+.cal form .clear {
+    background-color: #ed4848;
+}
+
+.cal form .operator {
+    background-color: orange;
+}
+
+
+
+.cal form input[type="text"] {
+    grid-column: span 4;  /*4칸차지*/
+    text-align: right;
+    padding: 0 10px;
+}
+
+.cal form .clear {
+    grid-column: span 3;  /*3칸차지*/
+}
+
+.cal form .result {
+    grid-column: span 3;  /*2칸차지*/
+    background-color: orange;
+}
