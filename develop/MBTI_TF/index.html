@@ -144,12 +144,14 @@
         F: {
           100: {
             name: "넌 나고 난 너야 겉촉속촉 F",
-            explain: "나의 모든 일상 하나하나를 다 공유해요. 일상 카톡 제일 많이 보내는 사람이 저에요! '넌 진짜 공감능력이 좋은 것 같아'하는 얘기를 자주 들어요. 안친한 사람이 나한테 고민을 털어놓으면 감동 받아요",
+            explain:
+              "나의 모든 일상 하나하나를 다 공유해요. 일상 카톡 제일 많이 보내는 사람이 저에요! '넌 진짜 공감능력이 좋은 것 같아'하는 얘기를 자주 들어요. 안친한 사람이 나한테 고민을 털어놓으면 감동 받아요",
             img: "F.jpg",
           },
           50: {
             name: "감정 속에 스치는 이성 메마른 F",
-            explain: "친구가 힘들다고 할 때, 무슨 일인지 먼저 말 안하면 절대 물어보지 않아요. '먼저 말 안 하는걸 보니, 말하기 싫어하는거일 수 있으니 물어보지 말아야지!' 하는 생각이에요. 엄청 친한 사이가 아니고서는 서운한 점을 잘 얘기 안해요",
+            explain:
+              "친구가 힘들다고 할 때, 무슨 일인지 먼저 말 안하면 절대 물어보지 않아요. '먼저 말 안 하는걸 보니, 말하기 싫어하는거일 수 있으니 물어보지 말아야지!' 하는 생각이에요. 엄청 친한 사이가 아니고서는 서운한 점을 잘 얘기 안해요",
             img: "F.jpg",
           },
         },
@@ -176,14 +178,17 @@
         if (num == 10) {
           $(".question").hide();
           $(".result").show();
-          let level = "";
-          $("#TF").val() < 5 ? (level += "F") : (level += "T"); /* 5문제 이하일 땐 F 5문제 이상일 땐 T 출력 */
           let rate = "";
-         ( $("#TF").val() > 7 || $("#TF").val())  < 2 ? (rate += 100) :  (rate += 50) /* 9문제 중 8개 이상이면 100%, 5개 이상이면 7이하면 50퍼로 설정 */
-            
-          $("#category").html(`나는 ${level} ${rate}% 인간!`); /* .html을 사용해서 html에 넣어줌 level에는 T/F가 들어가 있고 rate는 100,50이 들어가 있다. */
+          level == "T"
+            ? (rate = parseInt(($("#TF").val() / 9) * 100))
+            : (rate = parseInt(((9 - $("#TF").val()) / 9) * 100));
+          let a = "";
+          rate > 75 ? (a = 100) : (a = 50);
+          $("#category").html(
+            `나는 ${level} ${rate}% 인간!`
+          ); 
           $("#name").html(result[level][rate]["name"]);
-          $("#explain").html(result[level][rate]["explain"]);
+          $("#explain").html(result[level][a]["explain"]);
           $("#img").attr("src", result[level][rate]["img"]);
         } else {
           $(".progress-bar").attr("style", "width: calc(100/9*" + num + "%)");
@@ -194,7 +199,6 @@
           num++;
         }
       }
-
     </script>
   </body>
 </html>
