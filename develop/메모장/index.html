@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
+      .wrap {
+        height: 250px;
+        background: #ddd;
+        text-align: center;
+        padding: 50px;
+      }
+
+      .wrap .title {
+        font-size: 50px;
+        margin-bottom: 30px;
+      }
+
+      .wrap .subtxt {
+        font-size: 20px;
+      }
+
+      main {
+        margin-top: 50px;
+        display: flex;
+        justify-content: space-between;
+      }
+
+      main section {
+        padding: 100px;
+      }
+
+      input {
+        display: block;
+        width: 500px;
+        height: 50px;
+        margin-bottom: 20px;
+        padding: 12px;
+      }
+
+      textarea {
+        display: block;
+        width: 500px;
+        height: 200px;
+        margin-bottom: 20px;
+        padding: 15px 12px;
+      }
+
+      button {
+        display: block;
+        width: 150px;
+        height: 40px;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="wrap">
+      <h1 class="title">나만의 서랍장🔑</h1>
+      <p class="subtxt">
+        중요한 링크를 저장해두고 꺼내 볼 수 있는 소중한 서랍장입니다.
+      </p>
+    </header>
+    <main>
+      <section>
+        <input placeholder="link를 첨부해주세요." type="text" id="linktxt" />
+        <textarea
+          placeholder="코멘트를 입력해주세요."
+          id="comment"
+          cols="30"
+          rows="5"
+        ></textarea>
+        <button onclick="saveNote()">서랍장에 저장</button>
+      </section>
+      <section id="display"></section>
+    </main>
+    <script>
+      let allMemo = JSON.parse(localStorage.getItem("allMemo"));
+      allMemo = allMemo ?? [];
+      render();
+
+      function saveNote() {
+        const link = document.querySelector("#linktxt").value;
+        const comment = document.querySelector("#comment").value;
+
+        allMemo.push({ link, comment, len: allMemo.length });
+
+        localStorage.setItem("allMemo", JSON.stringify(allMemo));
+        render();
+      }
+
+      function render() {
+        const display = document.querySelector("#display");
+        display.innerHTML = "";
+
+        // // 최신 게시물이 위로 올라오도록
+        // for (let i = allMemo.length; i > 0 ; i--) {
+        //     // 아래와 유사 코드
+        // }
+
+        for (const item of allMemo) {
+          const saveLink = document.createElement("h2");
+          const saveComment = document.createElement("p");
+          const saveId = document.createElement("p");
+          const deleteMemoBtn = document.createElement("button");
+
+          saveLink.textContent = item.link;
+          saveComment.textContent = item.comment;
+          saveId.textContent = item.len + 1;
+          deleteMemoBtn.textContent = "삭제";
+          deleteMemoBtn.setAttribute("id", item.len);
+          deleteMemoBtn.setAttribute("onclick", "remove()");
+
+          display.appendChild(saveId);
+          display.appendChild(saveLink);
+          display.appendChild(saveComment);
+          display.appendChild(deleteMemoBtn);
+        }
+      }
+
+      function remove() {
+        // console.log(event.srcElement.id);
+        // console.log(allMemo);
+        const idx = allMemo.find((item) => item.len == event.srcElement.id);
+        if (idx) {
+          allMemo.splice(
+            allMemo.findIndex((item) => item.len == idx.len),
+            1
+          );
+        }
+        localStorage.setItem("allMemo", JSON.stringify(allMemo));
+        render();
+      }
+    </script>
+  </body>
+</html>
