@@ -4,60 +4,13 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <style>
-      * {
-        padding: 0;
-        margin: 0;
-        box-sizing: border-box;
-      }
-      .wrap {
-        height: 250px;
-        background: #ddd;
-        text-align: center;
-        padding: 50px;
-      }
-
-      .wrap .title {
-        font-size: 50px;
-        margin-bottom: 30px;
-      }
-
-      .wrap .subtxt {
-        font-size: 20px;
-      }
-
-      main {
-        margin-top: 50px;
-        display: flex;
-        justify-content: space-between;
-      }
-
-      main section {
-        padding: 100px;
-      }
-
-      input {
-        display: block;
-        width: 500px;
-        height: 50px;
-        margin-bottom: 20px;
-        padding: 12px;
-      }
-
-      textarea {
-        display: block;
-        width: 500px;
-        height: 200px;
-        margin-bottom: 20px;
-        padding: 15px 12px;
-      }
-
-      button {
-        display: block;
-        width: 150px;
-        height: 40px;
-      }
-    </style>
+    <link rel="stylesheet" href="./style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Gamja+Flower&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
     <header class="wrap">
@@ -69,15 +22,21 @@
     <main>
       <section>
         <input placeholder="link를 첨부해주세요." type="text" id="linktxt" />
+        <div class="txt-btn">
+          <button class="fontbold">Bold</button>
+          <button class="fontred">text-red</button>
+        </div>
         <textarea
           placeholder="코멘트를 입력해주세요."
           id="comment"
           cols="30"
           rows="5"
         ></textarea>
-        <button onclick="saveNote()">서랍장에 저장</button>
+        <button onclick="saveNote()">서랍장에 보관</button>
       </section>
-      <section id="display"></section>
+      <section id="display">
+        <ul></ul>
+      </section>
     </main>
     <script>
       let allMemo = JSON.parse(localStorage.getItem("allMemo"));
@@ -92,40 +51,55 @@
 
         localStorage.setItem("allMemo", JSON.stringify(allMemo));
         render();
+
+        // link와 comment 초기화
+        document.querySelector("#linktxt").value = "";
+        document.querySelector("#comment").value = "";
+      }
+
+      const btnbold = document.querySelector(".fontbold");
+      btnbold.addEventListener("click", function () {
+        comment.classList.toggle("font-weight-bold");
+      });
+
+      const btnred = document.querySelector(".fontred");
+      btnred.addEventListener("click", function () {
+        comment.classList.toggle("font-color-red");
+      });
+
+      function fontred() {
+        const fontred = document.querySelector(".fontred");
+        comment.style.color = "red";
       }
 
       function render() {
-        const display = document.querySelector("#display");
+        const display = document.querySelector("#display ul");
         display.innerHTML = "";
 
-        // // 최신 게시물이 위로 올라오도록
-        // for (let i = allMemo.length; i > 0 ; i--) {
-        //     // 아래와 유사 코드
-        // }
-
         for (const item of allMemo) {
-          const saveLink = document.createElement("h2");
-          const saveComment = document.createElement("p");
+          const saveLink = document.createElement("p");
+          const saveComment = document.createElement("h3");
           const saveId = document.createElement("p");
           const deleteMemoBtn = document.createElement("button");
 
           saveLink.textContent = item.link;
           saveComment.textContent = item.comment;
-          saveId.textContent = item.len + 1;
+          saveId.textContent = `${item.len + 1}번째_서랍장`;
           deleteMemoBtn.textContent = "삭제";
           deleteMemoBtn.setAttribute("id", item.len);
           deleteMemoBtn.setAttribute("onclick", "remove()");
 
-          display.appendChild(saveId);
-          display.appendChild(saveLink);
-          display.appendChild(saveComment);
-          display.appendChild(deleteMemoBtn);
+          const li = document.createElement("li");
+          li.appendChild(saveId);
+          li.appendChild(saveLink);
+          li.appendChild(saveComment);
+          li.appendChild(deleteMemoBtn);
+
+          document.querySelector("#display ul").appendChild(li);
         }
       }
 
       function remove() {
-        // console.log(event.srcElement.id);
-        // console.log(allMemo);
         const idx = allMemo.find((item) => item.len == event.srcElement.id);
         if (idx) {
           allMemo.splice(

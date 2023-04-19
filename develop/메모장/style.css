@@ -1,0 +1,110 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    border: none;
+    font-family: 'Gamja Flower', cursive;
+    
+  }
+  .wrap {
+    height: 250px;
+    background: #ddd;
+    text-align: center;
+    padding: 50px;
+  }
+
+  .wrap .title {
+    font-size: 60px;
+    margin-bottom: 30px;
+  }
+
+  .wrap .subtxt {
+    font-size: 25px;
+  }
+
+  .txt-btn {
+    display: flex;
+    justify-content: end;
+    margin-bottom: 20px;
+  }
+
+  .fontbold {
+    width: 100px;
+    margin-right: 20px;
+    cursor: pointer;
+  }
+
+  .fontred {
+    width: 100px;
+  }
+
+  main {
+    margin-top: 50px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  main section {
+    padding: 100px;
+  }
+
+  input {
+    display: block;
+    width: 500px;
+    height:55px;
+    margin-bottom: 20px;
+    padding: 12px;
+    background: #FBF6BE;
+    border: 1.5px dashed #808080;
+    font-size: 19px;
+  }
+
+  input::placeholder,
+  textarea::placeholder {
+    color : #484848
+  }
+
+  textarea {
+    display: block;
+    width: 500px;
+    height: 250px;
+    margin-bottom: 30px;
+    padding: 15px 12px;
+    background: #FBF6BE;
+    border: 1.5px dashed #808080;
+    font-size: 21px;
+  }
+
+  textarea.font-weight-bold {
+    font-weight: bold;
+  }
+
+  textarea.font-color-red {
+    color: red;
+  }
+
+  button {
+    display: block;
+    width: 150px;
+    height: 40px;
+    border-radius: 15px;
+    background: #f4bf00d2;
+    color: #fff;
+    font-size: 20px;
+    border: 1px solid #808080;
+  }
+
+  #display {
+    width: 509px;
+    padding: 0;
+  }
+
+  ul {
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    grid-gap: 10px;
+  }
+
+  ul li {
+
+  }
