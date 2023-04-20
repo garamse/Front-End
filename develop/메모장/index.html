@@ -14,7 +14,7 @@
   </head>
   <body>
     <header class="wrap">
-      <h1 class="title">나만의 서랍장🔑</h1>
+      <h1 class="title">나만의 서랍장🔒</h1>
       <p class="subtxt">
         중요한 링크를 저장해두고 꺼내 볼 수 있는 소중한 서랍장입니다.
       </p>
@@ -32,7 +32,7 @@
           cols="30"
           rows="5"
         ></textarea>
-        <button onclick="saveNote()">서랍장에 보관</button>
+        <button class="save"onclick="saveNote()">서랍장에 보관</button>
       </section>
       <section id="display">
         <ul></ul>
@@ -84,8 +84,8 @@
 
           saveLink.textContent = item.link;
           saveComment.textContent = item.comment;
-          saveId.textContent = `${item.len + 1}번째_서랍장`;
-          deleteMemoBtn.textContent = "삭제";
+          saveId.textContent = `< ${item.len + 1}번째 - 서랍장 >`;
+          deleteMemoBtn.textContent = "지우기";
           deleteMemoBtn.setAttribute("id", item.len);
           deleteMemoBtn.setAttribute("onclick", "remove()");
 
