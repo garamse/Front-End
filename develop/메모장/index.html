@@ -32,7 +32,7 @@
           cols="30"
           rows="5"
         ></textarea>
-        <button class="save"onclick="saveNote()">서랍장에 보관</button>
+        <button class="save" onclick="saveNote()">서랍장에 보관</button>
       </section>
       <section id="display">
         <ul></ul>
@@ -47,42 +47,52 @@
         const link = document.querySelector("#linktxt").value;
         const comment = document.querySelector("#comment").value;
 
-        allMemo.push({ link, comment, len: allMemo.length });
+        // 중복된 링크인 경우 경고창 표시
+        const isDuplicate = allMemo.some((item) => item.link === link);
+        if (isDuplicate) {
+          alert("이미 존재하는 링크입니다!");
+          return;
+        }
 
-        localStorage.setItem("allMemo", JSON.stringify(allMemo));
-        render();
+        if (link.startsWith("https") && comment !== "") {
+          allMemo.push({ link, comment, len: allMemo.length });
 
-        // link와 comment 초기화
-        document.querySelector("#linktxt").value = "";
-        document.querySelector("#comment").value = "";
+          localStorage.setItem("allMemo", JSON.stringify(allMemo));
+          render();
+
+          // link와 comment 초기화
+          document.querySelector("#linktxt").value = "";
+          document.querySelector("#comment").value = "";
+        } else {
+          alert("link와 comment를 입력해주세요!");
+        }
       }
 
       const btnbold = document.querySelector(".fontbold");
       btnbold.addEventListener("click", function () {
+        const comment = document.querySelector("#comment");
         comment.classList.toggle("font-weight-bold");
       });
 
       const btnred = document.querySelector(".fontred");
       btnred.addEventListener("click", function () {
+        const comment = document.querySelector("#comment");
         comment.classList.toggle("font-color-red");
       });
-
-      function fontred() {
-        const fontred = document.querySelector(".fontred");
-        comment.style.color = "red";
-      }
 
       function render() {
         const display = document.querySelector("#display ul");
         display.innerHTML = "";
 
         for (const item of allMemo) {
-          const saveLink = document.createElement("p");
-          const saveComment = document.createElement("h3");
-          const saveId = document.createElement("p");
+          const saveLink = document.createElement("a"); // a 태그 추가
+          const saveComment = document.createElement("p");
+          const saveId = document.createElement("h3");
           const deleteMemoBtn = document.createElement("button");
 
           saveLink.textContent = item.link;
+          saveLink.href = item.link; // 링크 추가
+          saveLink.target = "_blank"; // 새 창에서 링크 열기
           saveComment.textContent = item.comment;
           saveId.textContent = `< ${item.len + 1}번째 - 서랍장 >`;
           deleteMemoBtn.textContent = "지우기";
@@ -90,8 +100,19 @@
           deleteMemoBtn.setAttribute("onclick", "remove()");
 
           const li = document.createElement("li");
+
+          if (
+            document
+              .querySelector("#comment")
+              .classList.contains("font-weight-bold")
+          ) {
+            saveComment.style.fontWeight = "bold";
+          } else {
+            saveComment.style.fontWeight = "normal";
+          }
+
           li.appendChild(saveId);
-          li.appendChild(saveLink);
+          li.appendChild(saveLink); // a 태그 추가
           li.appendChild(saveComment);
           li.appendChild(deleteMemoBtn);
 
@@ -99,6 +120,7 @@
         }
       }
 
+      // 삭제 코드
       function remove() {
         const idx = allMemo.find((item) => item.len == event.srcElement.id);
         if (idx) {
@@ -106,6 +128,10 @@
             allMemo.findIndex((item) => item.len == idx.len),
             1
           );
+          // 삭제된 요소 이후의 모든 요소의 len 값 감소
+          for (let i = idx.len; i < allMemo.length; i++) {
+            allMemo[i].len--;
+          }
         }
         localStorage.setItem("allMemo", JSON.stringify(allMemo));
         render();

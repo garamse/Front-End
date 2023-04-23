@@ -42,11 +42,12 @@
   main {
     margin-top: 50px;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
   }
 
   main section {
     padding: 100px;
+
   }
 
   input {
@@ -99,7 +100,6 @@
 
   #display {
     width: 1500px;
-    padding: 0;
   }
 
   ul {
@@ -112,9 +112,9 @@
   ul li {
     text-align: center;
     width: 300px;
-    padding: 40px;
+    padding: 50px;
     border-radius: 20px;
-    border: 1.5px solid black;
+    border: 1.5px dashed #696969;
 
   }
 
@@ -123,7 +123,58 @@
     margin-bottom: 15px;
   }
 
-  ul li p {
-    font-size: 18px;
+  ul li h3 {
+    margin-top: 10px;
   }
 
+  ul li p {
+    font-size: 20px;
+  }
+
+
+  @media screen and (max-width: 768px) {
+
+   .wrap .title {
+      font-size: 50px;
+    }
+
+    main {
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    main section {
+      padding: 50px;
+    }
+
+
+    main textarea {
+      margin: 20px;
+    }
+    
+    input {
+      width: 90%;
+      margin: 0 auto 20px;
+      font-size: 16px;
+    }
+    
+    textarea {
+      width: 90%;
+      margin-bottom: 30px;
+      font-size: 18px;
+    }
+
+    ul {
+      grid-template-columns: repeat(1,1fr);
+      justify-items: center;
+      grid-gap: 50px;
+    }
+    
+    ul li {
+      width: 100%;
+      padding: 30px;
+      font-size: 16px;
+    }
+
+  }
+  
