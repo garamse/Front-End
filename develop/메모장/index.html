@@ -60,9 +60,11 @@
           localStorage.setItem("allMemo", JSON.stringify(allMemo));
           render();
 
-          // link와 comment 초기화
+          // link와 comment, comment btn 초기화
           document.querySelector("#linktxt").value = "";
           document.querySelector("#comment").value = "";
+          document.querySelector("#comment").classList.remove("font-weight-bold");
+          document.querySelector("#comment").classList.remove("font-color-red");
         } else {
           alert("link와 comment를 입력해주세요!");
         }
@@ -100,16 +102,6 @@
           deleteMemoBtn.setAttribute("onclick", "remove()");
 
           const li = document.createElement("li");
-
-          if (
-            document
-              .querySelector("#comment")
-              .classList.contains("font-weight-bold")
-          ) {
-            saveComment.style.fontWeight = "bold";
-          } else {
-            saveComment.style.fontWeight = "normal";
-          }
 
           li.appendChild(saveId);
           li.appendChild(saveLink); // a 태그 추가

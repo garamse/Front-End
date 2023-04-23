@@ -6,6 +6,7 @@
   font-family: "Gamja Flower", cursive;
 }
 .wrap {
+  width: 100%;
   background: #ddd;
   text-align: center;
   padding: 50px;
@@ -132,7 +133,11 @@ ul li button {
 
 
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 900px) {
+  .wrap {
+    width: 100%;
+  }
+
   main {
     flex-direction: column;
   }
@@ -151,3 +156,7 @@ ul li button {
     max-width: 230px;
   }
 }
+
+
+
+
