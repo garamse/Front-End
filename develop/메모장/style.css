@@ -44,6 +44,11 @@ input::placeholder,
 textarea::placeholder {
   color: #484848;
 }
+.toolbar {
+  display: flex;
+  padding: 20px 0;
+  justify-content: end;
+}
 
 .txt-btn {
   display: flex;
