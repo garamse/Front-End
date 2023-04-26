@@ -43,6 +43,9 @@
       allMemo = allMemo ?? [];
       render();
 
+      let isBold = false;
+      let isRed = false;
+
       function saveNote() {
         const link = document.querySelector("#linktxt").value;
         const comment = document.querySelector("#comment").value;
@@ -55,108 +58,84 @@
         }
 
         if (link.startsWith("https") && comment !== "") {
-          const saveDate = new Date().toLocaleString(); // 작성한 날짜 저장
-          allMemo.push({ link, comment, saveDate, len: allMemo.length }); // allMemo에 날짜 추가
+          const saveDate = new Date().toLocaleString();
+          allMemo.push({
+            link,
+            comment,
+            saveDate,
+            len: allMemo.length,
+            isBold,
+            isRed,
+          });
 
           localStorage.setItem("allMemo", JSON.stringify(allMemo));
           render();
 
-          // link와 comment, comment btn 초기화
           document.querySelector("#linktxt").value = "";
           document.querySelector("#comment").value = "";
           document
             .querySelector("#comment")
             .classList.remove("font-weight-bold");
           document.querySelector("#comment").classList.remove("font-color-red");
+          isBold = false; // isBold 초기화
+          isRed = false; // isRed 초기화
         } else {
           alert("link와 comment를 입력해주세요!");
         }
       }
-
-      const btnbold = document.querySelector(".fontbold");
-      btnbold.addEventListener("click", function () {
-        const comment = document.querySelector("#comment");
-        comment.classList.toggle("font-weight-bold");
-      });
-
-      const btnred = document.querySelector(".fontred");
-      btnred.addEventListener("click", function () {
-        const comment = document.querySelector("#comment");
-        comment.classList.toggle("font-color-red");
-      });
-
-      /*function render() {
-        const display = document.querySelector("#display ul");
-        display.innerHTML = "";
-
-        for (const item of allMemo) {
-          const saveLink = document.createElement("a"); // a 태그 추가
-          const saveComment = document.createElement("p");
-          const saveId = document.createElement("h3");
-          const deleteMemoBtn = document.createElement("button");
-
-          saveLink.textContent = item.link;
-          saveLink.href = item.link; // 링크 추가
-          saveLink.target = "_blank"; // 새 창에서 링크 열기
-          saveComment.textContent = item.comment;
-          saveId.textContent = `< ${item.len + 1}번째 - 서랍장 >`;
-          deleteMemoBtn.textContent = "지우기";
-          deleteMemoBtn.setAttribute("id", item.len);
-          deleteMemoBtn.setAttribute("onclick", "remove()");
-
-          const li = document.createElement("li");
-
-          // comment 요소에 font-weight-bold 클래스가 있는 경우 해당 클래스를 적용
-          if (saveComment.classList.contains("font-weight-bold")) {
-            saveComment.style.fontWeight = "Bold";
-            li.appendChild(saveComment);
-          }else {
-            saveComment.style.fontWeight = "Normal"
-            li.appendChild(saveComment);
-          }
-
-          li.appendChild(saveId);
-          li.appendChild(saveLink); // a 태그 추가
-          li.appendChild(deleteMemoBtn);
-
-          document.querySelector("#display ul").appendChild(li);
-        }
-      }*/
 
       function render() {
         const display = document.querySelector("#display ul");
         display.innerHTML = "";
 
         for (const item of allMemo) {
-          const saveLink = document.createElement("a");
+          const saveLink = document.createElement("a"); // a 태그
           const saveComment = document.createElement("p");
           const saveId = document.createElement("h3");
-          const saveDate = document.createElement("p"); // saveDate 변수 선언
           const deleteMemoBtn = document.createElement("button");
+          const saveDate = document.createElement("p"); // saveDate 변수 선언
 
           saveLink.textContent = item.link;
-          saveLink.href = item.link;
+          saveLink.href = item.link; // 링크
           saveLink.target = "_blank";
           saveComment.textContent = item.comment;
           saveId.textContent = `< ${item.len + 1}번째 - 서랍장 >`;
           saveDate.innerHTML = item.saveDate; // 저장한 날짜를 표시
 
-          deleteMemoBtn.textContent = "지우기";
+          deleteMemoBtn.textContent = "서랍장 삭제";
           deleteMemoBtn.setAttribute("id", item.len);
           deleteMemoBtn.setAttribute("onclick", "remove()");
 
           const li = document.createElement("li");
 
+          // bold와 red에 대한 스타일 적용
+          saveComment.style.fontWeight = item.isBold ? "bold" : "normal";
+          saveComment.style.color = item.isRed ? "red" : "black";
+
+          
           li.appendChild(saveId);
           li.appendChild(saveLink);
           li.appendChild(saveComment);
-          li.appendChild(saveDate); // saveDate 엘리먼트를 자식으로 추가
+          li.appendChild(saveDate); // saveDate 추가
           li.appendChild(deleteMemoBtn);
-          
 
-          document.querySelector("#display ul").appendChild(li);
+          display.appendChild(li);
         }
       }
+
+      const btnbold = document.querySelector(".fontbold");
+      btnbold.addEventListener("click", function (e) {
+        const comment = document.querySelector("#comment");
+        comment.classList.toggle("font-weight-bold");
+        isBold = !isBold;
+      });
+
+      const btnred = document.querySelector(".fontred");
+      btnred.addEventListener("click", function (e) {
+        const comment = document.querySelector("#comment");
+        comment.classList.toggle("font-color-red");
+        isRed = !isRed;
+      });
 
       // 삭제 코드
       function remove() {
